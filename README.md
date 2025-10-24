@@ -1,0 +1,11 @@
+# Assignment 3: Median of Array
+
+<h2 style="margin-bottom: 0; margin-top: 0;"> Melisa</h2>
+<h2 style="margin-bottom: 0; margin-top: -0;"> Houria: enter your student number**</h2>
+
+This is the submission of the Assessment 3 Group project, for the chosen algorithm problem "*Finding the median of an array*" 
+In this repository the project is structured as follows:
+
+- "*Deterministic*" folder containing deterministic solution and gtests
+- "*Randomised*" folder containing randomised solution and gtests
+- Report sent my email, ed and on root (?)
