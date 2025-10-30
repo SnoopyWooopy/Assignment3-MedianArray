@@ -24,8 +24,18 @@ void display (std::vector<int> & array) {
   std::cout << i << " ";
  }
 }
+// Od or even array? (Determine inital k)
+int oddEven(std::vector<int> & array) {
+ if (array.size() % 2 == 1) {
+  int k = array.size()/2;
+ }
+ else {
+  int k = array.size()/2;
+ }
+}
 
-int quickSelect(std::vector<int> & array) {
+
+int quickSelect(std::vector<int> & array, int k) {
 // STEP 1 Pick random pivot
  std::random_device ran;
  std::mt19937 gen(ran());
@@ -54,12 +64,12 @@ int quickSelect(std::vector<int> & array) {
   }
  }
  //STEP 3 Median time
- if (lessCounter == median - 1) return pivot;
- if (lessCounter > median - 1) {
-  quickSelect(less,median);
+ if (lessCounter == k - 1) return pivot;
+ if (lessCounter > k - 1) {
+  quickSelect(less,k);
  }
  else {
-  quickSelect(more,median-lessCounter-1);
+  quickSelect(more,k - lessCounter - 1);
  }
 
  // Find random pivot element
@@ -70,11 +80,13 @@ int quickSelect(std::vector<int> & array) {
  display(more);
 
  return 0;
-
 }
+
 int main() {
- std::vector<int> array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
- quickSelect(array);
+ std::vector<int> array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+ int answer = quickSelect(array,array.size()/2);
+ system("clear");
+ std::cout << "Median Value = " << answer << std::endl;
  return 0;
 }
 
