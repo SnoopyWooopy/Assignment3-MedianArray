@@ -3,12 +3,14 @@
 
 #include <vector>
 #include <random>
+#include <cmath> // ceil round up
 
 /*
  Planning Random Quickselect --- To do this you must understand quicksort
  Given array of n size (randomly given? unordered) find middle value (ordered)
  median = n /2 (floor up)
-
+https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0908.pdf
+In above, I inteprit k as n / 2
 https://www.geeksforgeeks.org/dsa/quickselect-algorithm/
  */
 
@@ -36,7 +38,9 @@ int quickSelect(std::vector<int> & array) {
  // Less and more subarrays
  std::vector<int> less;
  std::vector<int> more;
- int lessCounter = 0;
+ int lessCounter = 0; // Counting L elements
+ // int medianPoint = ceil(array.size()/2); //median pointers (if sorted)
+ int median = array.size() / 2; //basic
 
  //STEP 2 split array into less or more
  for ( int i = 0; i < array.size(); i++ ) {
@@ -48,6 +52,14 @@ int quickSelect(std::vector<int> & array) {
   else {
    more.push_back(array[i]);
   }
+ }
+ //STEP 3 Median time
+ if (lessCounter == median - 1) return pivot;
+ if (lessCounter > median - 1) {
+  quickSelect(less,median);
+ }
+ else {
+  quickSelect(more,median-lessCounter-1);
  }
 
  // Find random pivot element
