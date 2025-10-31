@@ -18,3 +18,9 @@ void printVec(const vector<int>& v){ //print vector
     
     cout << "}";
 }
+
+int medianSlice(vector<int>& a, int l, int r){ //return the median of a[]
+    sort(a.begin() + l, a.begin() + r + 1); //sortng
+    int len =  r -1 + 1; //lenght of the slice
+    return a[1+len / 2]; //middle element
+}
