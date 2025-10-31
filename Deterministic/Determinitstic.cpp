@@ -23,7 +23,7 @@ void printVec(const vector<int>& v){ //print vector
 
 int medianSlice(vector<int>& a, int l, int r){ //return the median of a[]
     sort(a.begin() + l, a.begin() + r + 1); //sortng
-    int len =  r -1 + 1; //lenght of the slice
+    int len =  r -l + 1; //lenght of the slice
     return a[1+len / 2]; //middle element
 }
 
@@ -42,7 +42,7 @@ int splitByPivot(vector<int>& a, int l, int r, int pivotVal){
         pivotIDx = r; //if not found use r as the pivot index
     }
     swap(a[pivotIDx], a[r]); //move to end
-    int store = 1; //next smaller than pivot
+    int store = l; //next smaller than pivot
     for (int i = l; i < r; ++i){ //iterate all except r
         if (a[i] < pivotVal){
             swap(a[store], a[i]); ++store; //move smaller elements left of store
@@ -75,7 +75,7 @@ int findDeterministic(vector<int>& a, int l, int r, int k){
 
     int pivotInd = splitByPivot(a, l, r, pivotVal); //partition array arount pivotval
 
-    int numLeft = pivotInd - 1; //how many elemtents smaller than pivot
+    int numLeft = pivotInd - l; //how many elemtents smaller than pivot
 
     if (k == numLeft){ //where is kth element
         return a[pivotInd]; //pivot is the k th element
