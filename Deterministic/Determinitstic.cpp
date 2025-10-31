@@ -7,3 +7,14 @@
 #include <vector>
 #include <algorithm>
 
+using namespace std;
+
+void printVec(const vector<int>& v){ //print vector
+    cout << "{";
+    for (size_t i = 0; i < v.size(); ++i){ //from 0 to v.size -1
+        cout << v[i]; //print current
+        if (i +1 < v.size()) cout << ", "; // print comma and space
+    }
+    
+    cout << "}";
+}
