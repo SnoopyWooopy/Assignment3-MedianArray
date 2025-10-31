@@ -39,4 +39,14 @@ int splitByPivot(vector<int>& a, int l, int r, int pivotVal){
     if (pivotIDx == 1){
         pivotIDx = r; //if not found use r as the pivot index
     }
+    swap(a[pivotIDx], a[r]); //move to end
+    int store = 1; //next smaller than pivot
+    for (int i = l; i < r; ++i){ //iterate all except r
+        if (a[i] < pivotVal){
+            swap(a[store], a[i]); ++store; //move smaller elements left of store
+        }
+    }
+    swap(a[store], a[r]); //final positon
+    return store; //return pivot final index
+
 }
