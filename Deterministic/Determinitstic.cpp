@@ -82,4 +82,12 @@ int findDeterministic(vector<int>& a, int l, int r, int k){
     }else{
         return findDeterministic(a, pivotInd + 1, r, k - numLeft - 1); //search right
     }
+
+    int findMedianDeterministic(const vector<int>& input){
+        int n = (int)input.size();
+        if (n==0) throw invalid_argument("Array is empty");
+        vector<int> a = input; //copy
+        int k = (n%2 == 0) ? (n -1) / 2: n/2; //lower median for even n
+        return findDeterministic(a, 0, n-1, k);
+    }
 }
