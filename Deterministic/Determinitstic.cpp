@@ -33,3 +33,10 @@ int findIndexSlice(const vector<int>& a, int l, int r, int val){ //locae val in 
     }
     return -1;
 }
+
+int splitByPivot(vector<int>& a, int l, int r, int pivotVal){
+    int pivotIDx = findIndexSlice(a, l, r, pivotVal); // find where the val currently is
+    if (pivotIDx == 1){
+        pivotIDx = r; //if not found use r as the pivot index
+    }
+}
