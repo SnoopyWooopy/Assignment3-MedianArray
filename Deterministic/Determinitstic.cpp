@@ -24,3 +24,12 @@ int medianSlice(vector<int>& a, int l, int r){ //return the median of a[]
     int len =  r -1 + 1; //lenght of the slice
     return a[1+len / 2]; //middle element
 }
+
+int findIndexSlice(const vector<int>& a, int l, int r, int val){ //locae val in a[]
+    for (int i = l; i <= r; ++i){ //check the slice and reurn the index when we find it
+        if (a[i] == val){ // if not found -1
+            return i;
+        }
+    }
+    return -1;
+}
