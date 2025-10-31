@@ -50,3 +50,20 @@ int splitByPivot(vector<int>& a, int l, int r, int pivotVal){
     return store; //return pivot final index
 
 }
+
+int findDeterministic(vector<int>& a, int l, int r, int k){
+    if (l == r){
+        return a[l]; //base case only 1 element
+    }
+
+    vector<int> medians; //divide into group of 5 and find each grpups median
+    for (int i = l; i <= r; i += 5){
+        int groupRight = min(i + 4, r); //end of group
+        medians.push_back(medianSlice(a, i, groupRight)); //store median
+
+    }
+
+    int pivotVal; //median of medians so we can use it as a pivot
+    if (medians.size)
+
+}
