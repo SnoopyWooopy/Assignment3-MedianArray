@@ -73,7 +73,13 @@ int findDeterministic(vector<int>& a, int l, int r, int k){
 
     int pivotInd = splitByPivot(a, l, r, pivotVal); //partition array arount pivotval
 
-    int numleft = pivotInd - 1; //how many elemtents smaller than pivot
+    int numLeft = pivotInd - 1; //how many elemtents smaller than pivot
 
-    
+    if (k == numLeft){ //where is kth element
+        return a[pivotInd]; //pivot is the k th element
+    }else if(k < numLeft){
+        return findDeterministic(a, l, pivotInd -1, k); //search left
+    }else{
+        return findDeterministic(a, pivotInd + 1, r, k - numLeft - 1); //search right
+    }
 }
