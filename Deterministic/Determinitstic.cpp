@@ -6,6 +6,8 @@
 #include <iostream> //to print
 #include <vector>
 #include <algorithm>
+#include <stdexcept> //for invalid argument
+
 
 using namespace std;
 
