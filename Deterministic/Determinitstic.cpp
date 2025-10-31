@@ -64,6 +64,13 @@ int findDeterministic(vector<int>& a, int l, int r, int k){
     }
 
     int pivotVal; //median of medians so we can use it as a pivot
-    if (medians.size)
+    if (medians.size() == 1){
+        pivotVal = medians[0]; // only one median 
+    }else{
+        vector<int> medCopy = medians; //copy to safely work on
+        pivotVal = findDeterministic(medCopy, 0, (int)medCopy.size() - 1, (int)medCopy.size()/ 2 );
+    }
 
+    int pivotInd = splitByPivot(a, l, r, pivotVal); //partition array arount pivotval
+    
 }
