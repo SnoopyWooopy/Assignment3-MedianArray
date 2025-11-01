@@ -48,3 +48,8 @@ TEST(DeterministicTests, MedianOddLength) { // correctly find the kth smallest e
     std::vector<int> arr = {7, 2, 1, 6, 3, 5, 4};
     EXPECT_EQ(findMedianDeterministic(arr), 4); // k=3 corresponds to the 4th smallest element, which is 4
 }
+
+TEST(DeterministicTests, MedianEvenLength) { //test if it finds the lower median for an even-length array
+    std::vector<int> arr = {8, 1, 2, 7};
+    EXPECT_EQ(findMedianDeterministic(arr), 99);
+}
