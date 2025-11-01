@@ -22,5 +22,9 @@ TEST(DeterministicTests, FindIndexSliceExists) { //tests finding a value that ex
     EXPECT_EQ(findIndexSlice(arr, 0, 2, 20), 1);
 }
 
+TEST(DeterministicTests, FindIndexSliceNotExists) { //findIndexSlice returns -1 if the value is not in the slice.
+    std::vector<int> arr = {10, 20, 30}; 
+    EXPECT_EQ(findIndexSlice(arr, 0, 2, 25), -1);
+}
 
 
