@@ -42,3 +42,9 @@ TEST(DeterministicTests, SplitByPivotPivotNotInArray) { //when the pivot value i
     int pivotIndex = splitByPivot(arr, 0, 2, 3); //3 is not ins the array
     EXPECT_EQ(arr[pivotIndex], 4); //default to last element
 }
+
+//findMedianDeterministic Tests
+TEST(DeterministicTests, MedianOddLength) { // correctly find the kth smallest element
+    std::vector<int> arr = {7, 2, 1, 6, 3, 5, 4};
+    EXPECT_EQ(findMedianDeterministic(arr), 4); // k=3 corresponds to the 4th smallest element, which is 4
+}
