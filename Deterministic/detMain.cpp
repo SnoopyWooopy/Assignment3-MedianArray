@@ -36,3 +36,9 @@ TEST(DeterministicTests, SplitByPivotBasic) { //partitions the array correctly a
     EXPECT_EQ(arr[pivotIndex], 2);
     EXPECT_TRUE(arr[0] < 2 && arr[2] > 2);
 }
+
+TEST(DeterministicTests, SplitByPivotPivotNotInArray) { //when the pivot value is not in the array, ensure no crash and partition still works
+    std::vector<int> arr = {5, 1, 4};
+    int pivotIndex = splitByPivot(arr, 0, 2, 3); //3 is not ins the array
+    EXPECT_EQ(arr[pivotIndex], 4); //default to last element
+}
