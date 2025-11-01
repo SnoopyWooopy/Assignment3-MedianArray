@@ -32,6 +32,11 @@ int oddEven(std::vector<int> & array) {
  else {
   int k = array.size()/2;
  }
+ return 2;
+}
+
+int baicTest() {
+ return 2;
 }
 
 
@@ -79,14 +84,6 @@ int quickSelect(std::vector<int> & array, int k) {
  std::cout << std::endl << "more values: ";
  display(more);
 
- return 0;
-}
-
-int main() {
- std::vector<int> array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
- int answer = quickSelect(array,array.size()/2);
- system("clear");
- std::cout << "Median Value = " << answer << std::endl;
  return 0;
 }
 
