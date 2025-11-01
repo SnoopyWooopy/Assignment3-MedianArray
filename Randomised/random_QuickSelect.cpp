@@ -24,13 +24,23 @@ void display (std::vector<int> & array) {
   std::cout << i << " ";
  }
 }
-// Od or even array? (Determine inital k)
-int oddEven(std::vector<int> & array) {
+// Finds median, calculating with different approached wheter array is even or Odd + (Determine inital k)
+double findMedian(std::vector<int> & array) {
+ // Set up random num generator
+ std::random_device ran;
+ std::mt19937 gen(ran());
+
+ // Finds middle median (odd)
  if (array.size() % 2 == 1) {
   int k = array.size()/2;
+  return quickSelect(array,k);
  }
+ // Find (upper median element + lower median element) / 2
  else {
-  int k = array.size()/2;
+  int up = array.size()/2;
+  int down = array.size()/2 - 1;
+  double medianEven = avg(up,down);
+  return medianEven;
  }
  return 2;
 }
@@ -39,11 +49,11 @@ int baicTest() {
  return 2;
 }
 
-
-int quickSelect(std::vector<int> & array, int k) {
-// STEP 1 Pick random pivot
- std::random_device ran;
- std::mt19937 gen(ran());
+// Finds the k-th element (median)
+int quickSelect(std::vector<int> & array,  int k) {
+ 
+ // Pick random pivot from
+ // Currently only good for inital separation
  std::uniform_int_distribution<int> dist(0,array.size() - 1);
 
  int pivot = dist(gen); // element pivot p

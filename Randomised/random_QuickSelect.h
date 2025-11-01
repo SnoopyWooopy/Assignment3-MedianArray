@@ -11,7 +11,7 @@
     void display(std::vector<int> &array);
 
     // Determine if the array size is odd or even (returns median index)
-    int oddEven(std::vector<int> &array);
+    double findMedian(std::vector<int> &array);
 
     // Basic test function
     int baicTest();
