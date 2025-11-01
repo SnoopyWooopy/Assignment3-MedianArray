@@ -16,7 +16,11 @@ TEST(DeterministicTests, MedianSliceEvenSize){ //to check if medianSlic correctl
     EXPECT_EQ(medianSlice(arr, 0, 3), 6); // sorted {2, 4, 6, 8}, middle index = 2
 }
 
-//
+//findIndexSlice Tests
+TEST(DeterministicTests, FindIndexSliceExists) { //tests finding a value that exists in the slice and returns the correct index.
+    std::vector<int> arr = {10, 20, 30};
+    EXPECT_EQ(findIndexSlice(arr, 0, 2, 20), 1);
+}
 
 
 
