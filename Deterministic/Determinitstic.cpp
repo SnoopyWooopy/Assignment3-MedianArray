@@ -94,3 +94,13 @@ int findMedianDeterministic(const vector<int>& input){
     int k = (n%2 == 0) ? (n -1) / 2: n/2; //lower median for even n
     return findDeterministic(a, 0, n-1, k);
 }
+
+int main(){
+    vector<int> arr = {12, 3, 5, 7, 4, 19, 26};
+    try{
+        cout << "Median: " << findMedianDeterministic(arr) <<endl;
+    } catch (const exception& e){
+        cerr << "Error: " << e.what() << endl;
+    }
+    return 0;
+}
