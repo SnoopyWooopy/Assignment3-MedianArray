@@ -1,13 +1,12 @@
 //
-// Created by melisa on 24/10/25.
+// Student ID: 24749956 Houria Rauf.
 //
 
 #ifndef ASSIGNMENT3_DETERMINITSTIC_H
 #define ASSIGNMENT3_DETERMINITSTIC_H
 
 
-class Determinitstic {
-};
+
 
 //test
 
