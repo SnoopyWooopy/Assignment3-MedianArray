@@ -51,7 +51,7 @@ TEST(DeterministicTests, MedianOddLength) { // correctly find the kth smallest e
 
 TEST(DeterministicTests, MedianEvenLength) { //test if it finds the lower median for an even-length array
     std::vector<int> arr = {8, 1, 2, 7};
-    EXPECT_EQ(findMedianDeterministic(arr), 99);
+    EXPECT_EQ(findMedianDeterministic(arr), 2);
 }
 
 TEST(DeterministicTests, MedianEmptyArray) { //throwsan exception for empty arrays
