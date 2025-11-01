@@ -32,8 +32,8 @@ double findMedian(std::vector<int> & array) {
 
  // Finds middle median (odd)
  if (array.size() % 2 == 1) {
-  int k = array.size()/2;
-  return quickSelect(array,k);
+  int mid = array.size()/2;
+  return quickSelect(array,0, array.size() - 1, mid);
  }
  // Find (upper median element + lower median element) / 2
  else {
@@ -50,8 +50,8 @@ int baicTest() {
 }
 
 // Finds the k-th element (median)
-int quickSelect(std::vector<int> & array,  int k) {
- 
+int quickSelect(std::vector<int> & array,int left, int right, int k) {
+
  // Pick random pivot from
  // Currently only good for inital separation
  std::uniform_int_distribution<int> dist(0,array.size() - 1);

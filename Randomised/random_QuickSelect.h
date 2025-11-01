@@ -17,7 +17,7 @@
     int baicTest();
 
     // QuickSelect algorithm to find the k-th smallest element
-    int quickSelect(std::vector<int> &array, int k);
+    int quickSelect(std::vector<int> &array,int left, int right, int k);
 //};
 
 
