@@ -28,3 +28,11 @@ TEST(DeterministicTests, FindIndexSliceNotExists) { //findIndexSlice returns -1 
 }
 
 
+//splitByPivot Tests
+
+TEST(DeterministicTests, SplitByPivotBasic) { //partitions the array correctly around the pivot, smaller than pivot go left, larger go right
+    std::vector<int> arr = {3, 2, 1};
+    int pivotIndex = splitByPivot(arr, 0, 2, 2);
+    EXPECT_EQ(arr[pivotIndex], 2);
+    EXPECT_TRUE(arr[0] < 2 && arr[2] > 2);
+}
