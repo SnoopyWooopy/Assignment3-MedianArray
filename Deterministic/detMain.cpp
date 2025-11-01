@@ -53,3 +53,8 @@ TEST(DeterministicTests, MedianEvenLength) { //test if it finds the lower median
     std::vector<int> arr = {8, 1, 2, 7};
     EXPECT_EQ(findMedianDeterministic(arr), 99);
 }
+
+TEST(DeterministicTests, MedianEmptyArray) { //throwsan exception for empty arrays
+    std::vector<int> arr = {};
+    EXPECT_THROW(findMedianDeterministic(arr), std::invalid_argument);
+}
