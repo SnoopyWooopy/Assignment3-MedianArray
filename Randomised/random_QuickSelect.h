@@ -5,14 +5,12 @@
 #include <vector>
 #include <random>
 
-//class random_QuickSelect {
-    int partition(std::vector<int> &array);
+int partition(std::vector<int> &array);
 
-    // Determine if the array size is odd or even (returns median index)
-    double findMedian(std::vector<int> &array);
+// Determine if the array size is odd or even (returns median index)
+double findMedian(std::vector<int> &array);
 
-    // QuickSelect algorithm to find the k-th smallest element
-    int quickSelect(std::vector<int> &array,int left, int right, int k, std::mt19937& gen);
-//};
+// QuickSelect algorithm to find the k-th smallest element
+int quickSelect(std::vector<int> &array,int left, int right, int k, std::mt19937& gen);
 
 #endif //ASSIGNMENT3_QUICKSELECT_RANDOM_QUICKSELECT_H
