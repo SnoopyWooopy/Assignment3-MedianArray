@@ -73,20 +73,18 @@ int quickSelect(std::vector<int> & array,int left, int right, int k, mt19937& ge
  // Partition(split) into less or more arrays based on p pivot
  pivot = partition(array, left, right, pivot);
 
- // Less and more subarrays
- std::vector<int> less;
- std::vector<int> more;
- int lessCounter = 0; // Counting L elements
- // int medianPoint = ceil(array.size()/2); //median pointers (if sorted)
- int median = array.size() / 2; //basic
-
- //STEP 3 Median time NEXT STEPS
- if (lessCounter == k - 1) return pivot;
- if (lessCounter > k - 1) {
-  quickSelect(less,k);
+ //STEP 3 Median time NEXT STEPS (returning med || recursion on k side)
+ if (k == pivot) {
+  // pivot is at k (median point) median has been found
+  return array[k];
  }
+ // k smallest (median) is on the left side (subarray), recurse there
+ else if (k < pivot) {
+  return quickSelect(array,left, pivot - 1, k, gen);
+ }
+ // k smallest is on the right side (subarrary), recurse there
  else {
-  quickSelect(more,k - lessCounter - 1);
+  return quickSelect(array, pivot + 1, right, k, gen);
  }
 
  // Find random pivot element
