@@ -21,9 +21,40 @@ void display (std::vector<int> & array) {
   std::cout << i << " ";
  }
 }
+// Split into lesser and greater subarray based on p pivot
+int partition(std::vector<int> & array, int left, int right, int pivot) {
+ int pValue = array[pivot]; // Stores the raw value pivot pointer points to in array
+ int lessCounter = 0;
 
-int partition(std::vector<int> & array, int left, int right, int pivot, int piviot  ) {
- return 0;
+ // move pivot to end of array for partitioning (right - upper boundary)
+ std::swap(array[pivot],array[right]);
+
+ // Iterate and sort by moving elements < pivot value before/infront pivot
+ for (int i = left; i < right; i++) {
+  if (array[i] < pValue) {
+   std::swap(array[i],array[right]); // current element placed before pivot
+   lessCounter++;
+  }
+ }
+ // Move pivot into its final sorted position
+ std::swap(array[lessCounter],array[right]);
+ return lessCounter;
+
+ //
+
+ // OLD SOLUTION : Pesudo code poor interpritatoin
+ /* //STEP 2 split array into less or more
+ for ( int i = 0; i < array.size(); i++ ) {
+  if (array[i] == array[pivot]) continue;
+  if (array[i] < array[pivot]){
+   lessCounter++;
+   less.push_back(array[i]);
+  }
+  else {
+   more.push_back(array[i]);
+  }
+ }
+ */
 }
 
 
@@ -40,9 +71,7 @@ int quickSelect(std::vector<int> & array,int left, int right, int k, mt19937& ge
  // std::cout <<"Pointer: "<< pivot << " with value of " << array[pivot] << std::endl;
 
  // Partition(split) into less or more arrays based on p pivot
- pivot = partition(array);
-
- //
+ pivot = partition(array, left, right, pivot);
 
  // Less and more subarrays
  std::vector<int> less;
@@ -51,17 +80,6 @@ int quickSelect(std::vector<int> & array,int left, int right, int k, mt19937& ge
  // int medianPoint = ceil(array.size()/2); //median pointers (if sorted)
  int median = array.size() / 2; //basic
 
- //STEP 2 split array into less or more
- for ( int i = 0; i < array.size(); i++ ) {
-  if (array[i] == array[pivot]) continue;
-  if (array[i] < array[pivot]){
-   lessCounter++;
-   less.push_back(array[i]);
-  }
-  else {
-   more.push_back(array[i]);
-  }
- }
  //STEP 3 Median time NEXT STEPS
  if (lessCounter == k - 1) return pivot;
  if (lessCounter > k - 1) {
