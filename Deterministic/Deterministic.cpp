@@ -2,7 +2,7 @@
 // Student ID: 24749956 Houria Rauf.
 //
 
-#include "Determinitstic.h"
+#include "Deterministic.h"
 #include <iostream> //to print
 #include <vector>
 #include <algorithm>
