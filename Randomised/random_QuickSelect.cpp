@@ -17,37 +17,21 @@ https://www.geeksforgeeks.org/dsa/quickselect-algorithm/
 // Split into lesser and greater subarray based on p pivot
 int partition(std::vector<int> & array, int left, int right, int pivot) {
  int pValue = array[pivot]; // Stores the raw value pivot pointer points to in array
- int lessCounter = 0;
 
  // move pivot to end of array for partitioning (right - upper boundary)
  std::swap(array[pivot],array[right]);
+ int storeIndex = left;
 
  // Iterate and sort by moving elements < pivot value before/infront pivot
  for (int i = left; i < right; i++) {
   if (array[i] < pValue) {
-   std::swap(array[i],array[right]); // current element placed before pivot
-   lessCounter++;
+   std::swap(array[i],array[storeIndex]); // current element placed before pivot
+   storeIndex++;
   }
  }
  // Move pivot into its final sorted position
- std::swap(array[lessCounter],array[right]);
- return lessCounter;
-
- //
-
- // OLD SOLUTION : Pesudo code poor interpritatoin
- /* //STEP 2 split array into less or more
- for ( int i = 0; i < array.size(); i++ ) {
-  if (array[i] == array[pivot]) continue;
-  if (array[i] < array[pivot]){
-   lessCounter++;
-   less.push_back(array[i]);
-  }
-  else {
-   more.push_back(array[i]);
-  }
- }
- */
+ std::swap(array[storeIndex],array[right]);
+ return storeIndex;
 }
 
 
@@ -95,9 +79,9 @@ double findMedian(std::vector<int> & array) {
  else{
   int up = array.size()/2;
   int down = array.size()/2 - 1;
-  int upmedian = quickSelect(array,0,array.size() - 1,up, gen);
+  int upMedian = quickSelect(array,0,array.size() - 1,up, gen);
   int downMedian = quickSelect(array, 0, array.size() - 1, down, gen);
-  return (upmedian + downMedian)/2; // real median value for odd
+  return (upMedian + downMedian)/2.0; // real median value for odd
   }
 }
 
