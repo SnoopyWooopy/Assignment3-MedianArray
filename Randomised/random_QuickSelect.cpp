@@ -33,32 +33,34 @@ double findMedian(std::vector<int> & array) {
  // Finds middle median (odd)
  if (array.size() % 2 == 1) {
   int mid = array.size()/2;
-  return quickSelect(array,0, array.size() - 1, mid);
+  return quickSelect(array,0, array.size() - 1, mid), gen;
  }
- // Find (upper median element + lower median element) / 2
- else {
+ else{
   int up = array.size()/2;
   int down = array.size()/2 - 1;
-  double medianEven = avg(up,down);
-  return medianEven;
- }
- return 2;
+  int upmedian = quickSelect(array,0,array.size() - 1,up, gen);
+  int downMedian = quickSelect(array, 0, array.size() - 1, down, gen);
+  return (upmedian + downMedian)/2; // real median value for odd
+  }
 }
 
 int baicTest() {
  return 2;
 }
 
-// Finds the k-th element (median)
-int quickSelect(std::vector<int> & array,int left, int right, int k) {
+// Finds the k-th element within left, right inclusive
+int quickSelect(std::vector<int> & array,int left, int right, int k, mt19937& gen) {
 
- // Pick random pivot from
- // Currently only good for inital separation
- std::uniform_int_distribution<int> dist(0,array.size() - 1);
-
+ // Select random pivot from
+ // Currently only good for inital separation with left right ating as boundaried
+ // Initally std::uniform_int_distribution<int> dist(0,array.size() - 1);
+ std::uniform_int_distribution<int> dist(left, right);
  int pivot = dist(gen); // element pivot p
+
  // REMOVE LATER
  std::cout <<"Pointer: "<< pivot << " with value of " << array[pivot] << std::endl;
+
+// Parition
 
  // Less and more subarrays
  std::vector<int> less;
