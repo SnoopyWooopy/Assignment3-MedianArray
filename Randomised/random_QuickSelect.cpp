@@ -8,19 +8,12 @@
 /*
  Planning Random Quickselect --- To do this you must understand quicksort
  Given array of n size (randomly given? unordered) find middle value (ordered)
- median = n /2 (floor up)
+ median = n /2  or if even (upper+lowed) /2
 https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0908.pdf
 In above, I inteprit k as n / 2
 https://www.geeksforgeeks.org/dsa/quickselect-algorithm/
  */
 
-//
-
-void display (std::vector<int> & array) {
- for ( int i : array ) {
-  std::cout << i << " ";
- }
-}
 // Split into lesser and greater subarray based on p pivot
 int partition(std::vector<int> & array, int left, int right, int pivot) {
  int pValue = array[pivot]; // Stores the raw value pivot pointer points to in array
@@ -59,7 +52,7 @@ int partition(std::vector<int> & array, int left, int right, int pivot) {
 
 
 // Finds the k-th element within left, right inclusive boundaries
-int quickSelect(std::vector<int> & array,int left, int right, int k, mt19937& gen) {
+int quickSelect(std::vector<int> & array,int left, int right, int k, std::mt19937& gen) {
 
  // Select random pivot from
  // Currently only good for inital separation with left right ating as boundaried
@@ -86,15 +79,6 @@ int quickSelect(std::vector<int> & array,int left, int right, int k, mt19937& ge
  else {
   return quickSelect(array, pivot + 1, right, k, gen);
  }
-
- // Find random pivot element
- // Split array into less and greater
- std::cout << "less values: ";
- display(less);
- std::cout << std::endl << "more values: ";
- display(more);
-
- return 0;
 }
 
 // Finds median, calculating with different approached wheter array is even or Odd + (Determine inital k)
@@ -106,7 +90,7 @@ double findMedian(std::vector<int> & array) {
  // Finds middle median (odd)
  if (array.size() % 2 == 1) {
   int mid = array.size()/2;
-  return quickSelect(array,0, array.size() - 1, mid), gen;
+  return quickSelect(array,0, array.size() - 1, mid, gen);
  }
  else{
   int up = array.size()/2;
@@ -117,6 +101,7 @@ double findMedian(std::vector<int> & array) {
   }
 }
 
+// TRAASH DELETE (was only created to set up collaborative Gtests in singular project)
 int baicTest() {
  return 2;
 }
