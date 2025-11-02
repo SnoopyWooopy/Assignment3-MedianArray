@@ -3,18 +3,20 @@
 
 #include <vector>
 #include <random>
- // #include <cmath> // ceil round up nah
 
-/*
- Planning Random Quickselect --- To do this you must understand quicksort
- Given array of n size (randomly given? unordered) find middle value (ordered)
- median = n /2  or if even (upper+lowed) /2
-https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0908.pdf
-In above, I inteprit k as n / 2
-https://www.geeksforgeeks.org/dsa/quickselect-algorithm/
+/* Planning ... finding the median value of an array using QuickSelect
+Given an array of n size (unordered) find the middle value
+ median = n / 2
+ when n is even .... there are two middle values so
+ median = (up mid + lower mid)/2
+
+ Teacher given: ttps://www.cs.cmu.edu/~avrim/451f11/lectures/lect0908.pdf (not really used)
+ referenced: https://nh2.me/recent/Quickselect-with-median-of-medians.pdf
+ https://en.wikipedia.org/wiki/Quickselect
+ https://www.geeksforgeeks.org/dsa/quickselect-algorithm/
  */
 
-// Split into lesser and greater subarray based on p pivot
+// Split into lesser and greater subarray based on random p pivot
 int partition(std::vector<int> & array, int left, int right, int pivot) {
  int pValue = array[pivot]; // Stores the raw value pivot pointer points to in array
 
@@ -34,18 +36,13 @@ int partition(std::vector<int> & array, int left, int right, int pivot) {
  return storeIndex;
 }
 
-
 // Finds the k-th element within left, right inclusive boundaries
+// passed elements include array to search and the current boundaries (left,right) of the
 int quickSelect(std::vector<int> & array,int left, int right, int k, std::mt19937& gen) {
 
- // Select random pivot from
- // Currently only good for inital separation with left right ating as boundaried
- // Initally std::uniform_int_distribution<int> dist(0,array.size() - 1);
+ // Select random pivot from current array range
  std::uniform_int_distribution<int> dist(left, right);
  int pivot = dist(gen); // element pivot p
-
- // REMOVE LATER
- // std::cout <<"Pointer: "<< pivot << " with value of " << array[pivot] << std::endl;
 
  // Partition(split) into less or more arrays based on p pivot
  pivot = partition(array, left, right, pivot);
@@ -67,26 +64,22 @@ int quickSelect(std::vector<int> & array,int left, int right, int k, std::mt1993
 
 // Finds median, calculating with different approached wheter array is even or Odd + (Determine inital k)
 double findMedian(std::vector<int> & array) {
- // Set up random num generator
+ // Set up random num generator (will be used for random pivot)
  std::random_device ran;
  std::mt19937 gen(ran());
 
- // Finds middle median (odd)
+ // Finds middle median (odd array)
  if (array.size() % 2 == 1) {
-  int mid = array.size()/2;
+  int mid = array.size()/2; // Determine what k value is (median)
   return quickSelect(array,0, array.size() - 1, mid, gen);
  }
+ //Finds middle median (even array)
  else{
-  int up = array.size()/2;
-  int down = array.size()/2 - 1;
-  int upMedian = quickSelect(array,0,array.size() - 1,up, gen);
-  int downMedian = quickSelect(array, 0, array.size() - 1, down, gen);
-  return (upMedian + downMedian)/2.0; // real median value for odd
+  int up = array.size()/2; // Determine k for higher median pair
+  int down = array.size()/2 - 1; // determine k for lower median pair
+  int upMedian = quickSelect(array,0,array.size() - 1,up, gen); // upper median pair
+  int downMedian = quickSelect(array, 0, array.size() - 1, down, gen); //lower median pair
+  return (upMedian + downMedian)/2.0; // real median value for even arrays
   }
-}
-
-// TRAASH DELETE (was only created to set up collaborative Gtests in singular project)
-int baicTest() {
- return 2;
 }
 
