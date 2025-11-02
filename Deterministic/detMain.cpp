@@ -1,5 +1,5 @@
 // Student ID: 24749956 Houria Rauf.
-#include "Deterministic.h"
+#include "Determinitstic.h"
 #include <gtest/gtest.h>
 #include <vector>
 #include <stdexcept>
@@ -49,9 +49,9 @@ TEST(DeterministicTests, MedianOddLength) { // correctly find the kth smallest e
     EXPECT_EQ(findMedianDeterministic(arr), 4); // k=3 corresponds to the 4th smallest element, which is 4
 }
 
-TEST(DeterministicTests, MedianEvenLength) { //test if it finds the lower median for an even-length array
+TEST(DeterministicTests, MedianEvenLength) { //test if it finds the lower median for an even-length array.
     std::vector<int> arr = {8, 1, 2, 7};
-    EXPECT_EQ(findMedianDeterministic(arr), 99);
+    EXPECT_EQ(findMedianDeterministic(arr), 2);
 }
 
 TEST(DeterministicTests, MedianEmptyArray) { //throwsan exception for empty arrays
